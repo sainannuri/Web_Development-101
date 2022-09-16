@@ -1,55 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>ASSIGNMENT</title>
-  </head>
-  <body>
-    <header style="text-align: center">
-      <marquee>WELCOME TO MY WEBSITE</marquee>
-    </header>
-<div style="text-align: center">
-    <div class="main">
-      <div class="form">
-        <h4>REGISTRATION FORM</h4>
-        <form id="user-form">
-          <label for="name">Name : </label><br />
-          <input required type="text" name="name" id="name" />
-          <br />
-          <br />
-          <label for="email">Email : </label><br />
-          <input required type="email" name="email" id="email" />
-          <br />
-          <br />
-          <label for="password">Password : </label><br />
-          <input required type="password" name="password" id="password" />
-          <br />
-          <br />
-          <label for="dob">DOB : </label><br />
-          <input type="date" name="dob" id="dob" required />
-          <br />
-          <br />
-          <input
-            style="width: 40px"
-            type="checkbox"
-            name="acceptTerms"
-            id="acceptTerms"
-          />
-          <label for="acceptTerms">Accept terms & Conditions</label>
-          <br />
-          <br />
-          <input
-            style="background-color: rgb(19, 151, 19); color: rgb(207, 204, 179)"
-            type="submit"
-            value="Submit"
-          />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration </title>
+    <link rel="stylesheet" href="form.css">
+    
+</head>
+<body >
+    <div class="whole">
+        <h2 class="title">Registration Form</h2>
+        <br>
+        <form class="form" id="form">
+            <div class="inputform">
+                <label for="name">User Name:</label>
+                <input required type="text" id="name" name="name" class="input" >
+            </div>
+
+            <div class="inputform">
+                <label for="email">Email:</label>
+                <input required type="email" id="email" name="email" class="input">
+            </div>
+
+            <div class="inputform">
+                <label for="password">Password</label>
+                <input required type="password" id="password"name="password" class="input">
+            </div>
+
+            <div class="inputform">
+                <label for="dob">Date of Birth:</label>
+                <input required type="date" id="dob" name="dob" class="input">
+            </div>
+            
+            
+            <!-- <div class="inputform">
+                <label>Gender</label>
+                <select class="input">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div> -->
+            <div class="terms">
+                <input type="checkbox" id="acceptTerms" name="checkbox">
+                <label for="acceptTerms">Accept Terms & Conditions</label>
+            </div>
+
+            <div class="inputform">
+                <input type="submit" id="submit" value="Submit">
+            </div>
         </form>
-      </div>
     </div>
-    <div id="entrytbale"></div>
-    <script src="./scriptjs.js"></script>
-  </body>
+    <div id="displayTable"></div>
+    <!-- <table id="displayTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Dob</th>
+            <th>Accepted terms?</th>
+        </tr>
+    </table> -->
+    <script src="validate.js"></script>
+</body>
 </html>
