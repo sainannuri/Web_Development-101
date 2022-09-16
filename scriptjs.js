@@ -1,3 +1,13 @@
+const email = document.getElementById("email");
+email.addEventListener("input", () => validate(email));
+function validate(mail) {
+  if (mail.validity.typeMismatch) {
+    mail.setCustomValidity("Please enter valid email.");
+    mail.reportValidity();
+  } else {
+    mail.setCustomValidity("");
+  }
+}
 function validateAge(today, dobobj) {
   var age = today.getFullYear() - dobobj.getFullYear();
   var m = today.getMonth() - dobobj.getMonth();
@@ -13,14 +23,14 @@ dobelement.addEventListener("change", () => {
   let Today = new Date();
   age = validateAge(Today, dob);
   if (age < 18 || age > 55) {
-    dobelement.setCustomValidity("age must lie in 18 and 55 years!!!");
+    dobelement.setCustomValidity("Age should lie between 18 and 55.");
  
     return;
   } else {
     dobelement.setCustomValidity("");
   }
 });
-let form = document.getElementById("user-form");
+let form = document.getElementById("form");
 
 const retriveEntries = () => {
   let entries = localStorage.getItem("userEntry");
@@ -38,34 +48,33 @@ let Entries = retriveEntries();
 const displayEntries = () => {
   const entries = retriveEntries();
 
-  const rows = entries
+  const tablerows = entries
     .map((entry) => {
-      const name = `<td class="td">${entry.name}</td>`;
-      const email = `<td class="td">${entry.email}</td>`;
-      const password = `<td class="td">${entry.password}</td>`;
-      const dob = `<td class="td">${entry.dob}</td>`;
-      const acceptTerms = `<td class="td">${entry.acceptTerms}</td>`;
+      const name = `<td>${entry.name}</td>`;
+      const email = `<td>${entry.email}</td>`;
+      const password = `<td>${entry.password}</td>`;
+      const dob = `<td>${entry.dob}</td>`;
+      const acceptTerms = `<td>${entry.acceptTerms}</td>`;
 
       const row = `<tr>${name} ${email} ${password} ${dob} ${acceptTerms}</tr>`;
       return row;
     })
     .join("\n");
 
-  let tableDiv = document.getElementById("entrytbale");
+  let tableDiv = document.getElementById("displayTable");
 
   tableDiv.innerHTML = `<table>
   <tr>
-    <th class="th">Name</th>
-    <th class="th">Email</th>
-    <th class="th">Password</th>
-    <th class="th">Dob</th>
-    <th class="th">Accepted terms?</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Dob</th>
+    <th>Accepted terms?</th>
   </tr>
-    ${rows}
+    ${tablerows}
   </table>`;
 };
 
-// const saveUserFrom = () => {
 const saveUserFrom = (event) => {
   event.preventDefault();
 
@@ -93,13 +102,3 @@ const saveUserFrom = (event) => {
 form.addEventListener("submit", saveUserFrom);
 
 displayEntries();
-const email = document.getElementById("email");
-email.addEventListener("input", () => validate(email));
-function validate(ele) {
-  if (ele.validity.typeMismatch) {
-    ele.setCustomValidity("The Email is not in the right format!!!");
-    ele.reportValidity();
-  } else {
-    ele.setCustomValidity("");
-  }
-}
